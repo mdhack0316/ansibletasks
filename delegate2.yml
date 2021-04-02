@@ -1,0 +1,29 @@
+---
+- hosts: webserver
+  #serial: 2
+  tasks: 
+  - name: print the output of managed host
+    command: hostname 
+    register: managed_output
+
+  - name: installing package
+    yum: 
+     name: vsftpd
+     state: present
+    delegate_to: localhost
+
+  - name: run once
+    shell: whoami 
+    run_once: true
+
+  - name: print the output of mh
+    debug: 
+     msg: welcome from  "{{ managed_output.stdout }}"
+
+  - name: print the output of localhost host
+    command: hostname 
+    register: localhost_output
+    delegate_to: localhost
+  - name: print the output of localhost
+    debug:
+     msg: welcome from  "{{ localhost_output.stdout }}"

@@ -1,0 +1,15 @@
+---
+- hosts: node2
+  #serial: 2
+  tasks: 
+  - name: using local action 
+    local_action:
+     module: shell
+     _raw_params: "date"
+
+  - name: check 
+    local_action: shell cal
+
+  - name: using
+    shell: date
+    delegate_to: 127.0.0.1

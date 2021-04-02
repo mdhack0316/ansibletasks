@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  tasks: 
+  - name: using random choice
+    debug: 
+     msg: "{{ item }}"
+    with_random_choice: 
+    - "Play Cricket"
+    - "Eat Chole Bature"
+    - "Learn Ansible more in Deep"
+    - "Do Nothing"

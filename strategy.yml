@@ -1,0 +1,10 @@
+---
+- name: Using Strategy in Ansible 
+  strategy: debug
+  hosts: webserver
+  tasks:  
+  - name: Print the mg 
+    debug: 
+     msg: "Hello From Strategy"
+  - name: running command
+    shell: whoamia

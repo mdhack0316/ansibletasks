@@ -1,0 +1,15 @@
+---
+- hosts: node1
+  tasks: 
+  - name: reboot the server "{{ inventory_hostname }}" 
+    shell: sleep 2 & shutdown -r now  
+    async: 1
+    poll: 0
+
+  - name: waiting for start 
+    wait_for: 
+     host: "{{ inventory_hostname }}"
+     port: 22
+     delay: 90
+     state: started
+    delegate_to: localhost
