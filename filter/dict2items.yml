@@ -1,0 +1,13 @@
+---
+- name: Filter Data Output
+  hosts: localhost
+  vars: 
+   c: 
+    name: mayank 
+    gender: male
+    age: 35
+
+  tasks: 
+  - debug: 
+     msg: "hello, {{ item.key }} = {{ item.value }}"
+    loop: "{{ c | dict2items }}"

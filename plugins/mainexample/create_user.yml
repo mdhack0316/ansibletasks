@@ -1,0 +1,18 @@
+---
+- name: Create remote users
+  hosts: localhost
+  vars_files:
+  - user_list.yml
+  tasks:
+  - name: Create users
+    vars:
+     password: "{{ lookup('password', 'password-' + item.name + ' length=6 chars=digits') }}"
+    user:
+     name: "{{ item.name }}"
+     uid: "{{ item.uid }}"
+     state: present
+     password: "{{ password | password_hash('sha512') }}"
+     update_password: on_create
+     comment: "{{ item.first | capitalize }} {{ item.middle | capitalize }} {{ item.last | capitalize }}"
+    loop: "{{ users }}"
+

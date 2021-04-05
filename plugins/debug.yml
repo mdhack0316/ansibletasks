@@ -1,0 +1,8 @@
+---
+- name: Populate users from file
+  hosts: localhost
+  tasks:
+  - name: Create remote user
+    debug:
+     msg: "To be done"
+    loop: "{{ query('lines','cat users.txt') }}"

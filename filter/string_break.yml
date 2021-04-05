@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  tasks: 
+  - name: pringint line break msg
+    debug: 
+     msg: | 
+             This String 
+             Has Several 
+             Line Breaks
+
+  - name: Priging one line 
+    debug: 
+     msg: > 
+             This String Will Not 
+             Contain Any break in this sentence. 
+             Seprated Lines are joind
+             by a space charater.

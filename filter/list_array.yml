@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  vars: 
+   names:
+   - mayank  
+   - ujjwal 
+   - bhanu 
+  tasks: 
+  - debug: 
+     msg: "{{ names[2] }}"
+  
+  - assert: 
+     that: 
+     - names[1] == 'ujjwal'

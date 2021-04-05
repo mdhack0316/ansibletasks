@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  tasks: 
+  - assert: 
+     that: 
+     -  "{{ [1, 4, 2, 2 ] | unique | sort }} is eq ( [1, 2, 4] )"
+  

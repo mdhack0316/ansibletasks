@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  tasks: 
+  - name: pringint line break msg
+    copy: 
+     content: | 
+             This String 
+             Has Several 
+             Line Breaks
+     dest: lineb.txt
+  - name: Priging one line 
+    copy: 
+     content: > 
+             This String Will Not 
+             Contain Any break in this sentence. 
+             Seprated Lines are joind
+             by a space charater.
+     dest: line.txt

@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  vars: 
+   hosts: "{{ lookup('file', '/root/mayank.txt',)}}"
+  tasks:
+  - debug: 
+     msg: "{{ hosts }}"

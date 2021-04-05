@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  vars: 
+   password: "{{ lookup('password', 'credentials/' + item + ' length=6')  }}"
+  tasks: 
+  - user: 
+     name: "{{ item }}" 
+     state: present
+     update_password: on_create
+     password: "{{ password | password_hash('sha512') }}"
+    loop: "{{ query('lines','cat users.txt')}}" 
